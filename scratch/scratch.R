@@ -49,7 +49,7 @@ for (i in 1:nrow(bruh)) {
 
 
 
-data_longer <- bruh |> 
+data_widerer <- bruh |> 
   pivot_longer(
 cols = c(`NH4-N`, Ca, Mg, K, `NO3-N`),
 names_to = "Nutrient",
@@ -58,7 +58,6 @@ values_to = "Concentration"
 
 ggplot(
   data = data_longer,
-  mapping = aes(x = Year, y = Concentration, color = Sample_ID)
+  mapping = aes(x = window_start, y = Concentration, color = Nutrient)
 ) +
-  geom_line() +
-facet_wrap(~Nutrient)
+  geom_line()
