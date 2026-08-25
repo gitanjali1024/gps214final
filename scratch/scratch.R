@@ -49,7 +49,7 @@ for (i in 1:nrow(bruh)) {
 
 
 
-data_longer <- bruh |> 
+data_longerer <- bruh |> 
   pivot_longer(
 cols = c(`NH4-N`, Ca, Mg, K, `NO3-N`),
 names_to = "Nutrient",
