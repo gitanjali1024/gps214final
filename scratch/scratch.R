@@ -41,7 +41,32 @@ values <- data2 |>
   group_by(Sample_ID, window) |> 
   summarise_all(mean, na.rm = TRUE)
 
+<<<<<<< HEAD
 data_longer <- values |> 
+=======
+for (i in 1:nrow(bruh)) {
+  w1 <- bruh$window_start[i]
+  w2 <- bruh$window_start[i] + 63
+
+  # makes a vector
+  nh4 <- data2$`NH4-N`[data2$Sample_Date >= w1 & data2$Sample_Date < w2]
+  ca <- data2$Ca[data2$Sample_Date >= w1 & data2$Sample_Date < w2]
+  mg <- data2$Mg[data2$Sample_Date >= w1 & data2$Sample_Date < w2]
+  k <- data2$K[data2$Sample_Date >= w1 & data2$Sample_Date < w2]
+  no3 <- data2$`NO3-N`[data2$Sample_Date >= w1 & data2$Sample_Date < w2]
+
+
+  bruh$`NH4-N`[i] = mean(nh4, na.rm = TRUE)
+  bruh$Ca[i] = mean(ca, na.rm = TRUE)
+  bruh$Mg[i] = mean(mg, na.rm = TRUE)
+  bruh$K[i] = mean(k, na.rm = TRUE)
+  bruh$`NO3-N`[i] = mean(no3, na.rm = TRUE)
+}
+
+
+
+data_longerer <- bruh |> 
+>>>>>>> de880e6bf1aea3cb654b60a6db2640cfd0a356ed
   pivot_longer(
 cols = c(`NH4-N`, Ca, Mg, K, `NO3-N`),
 names_to = "Nutrient",
