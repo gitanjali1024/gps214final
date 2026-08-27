@@ -6,6 +6,10 @@ This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium 
 
 reads in the stream data from every site, selects only the important columns
 ```{r}
+#| echo: false
+#| output: false
+#| warning: false
+
 library(tidyverse)
 
 source("../1_clean_data.R")
@@ -47,6 +51,7 @@ write_csv(data_longer, "../output/output.csv")
 
 Plots the results
 ```{r}
+#| warning: false
 #Plot the data
 ggplot(
   data = data_longer,
