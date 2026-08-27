@@ -38,6 +38,9 @@ data_longer$Nutrient <- factor(
   data_longer$Nutrient,
   levels = c("K", "NO3-N", "Mg", "Ca", "NH4-N")
 )
+
+# Write the documents
+write_csv(data_longer, "output/output.csv")
 ```
 
 ## Results
