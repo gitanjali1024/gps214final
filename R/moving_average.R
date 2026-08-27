@@ -1,26 +1,24 @@
-
-
 # The input to this function should be a data frame containing stream chemistry data
 moving_average <- function(df) {
   # Initialize a tibble to contain the results
   result <- tibble(
-  sampleid = df$Sample_ID[1],
-  window_start = seq(ymd("1986-05-20"), ymd("1994-12-31"), by = "63 days"),
-  `NH4-N` = NA,
-  Ca = NA,
-  Mg = NA,
-  K = NA,
-  `NO3-N` = NA
-)
+    sampleid = df$Sample_ID[1],
+    window_start = seq(ymd("1988-01-05"), ymd("1994-12-31"), by = "63 days"),
+    `NH4-N` = NA,
+    Ca = NA,
+    Mg = NA,
+    K = NA,
+    `NO3-N` = NA
+  )
 
   # Fill in the iterator and sequence
   for (i in 1:nrow(result)) {
     # Create variables for the start and end of the current window
-  w1 <- result$window_start[i]
-  w2 <- result$window_start[i] + 63
+    w1 <- result$window_start[i]
+    w2 <- result$window_start[i] + 63
     # Create a logical vector, called "in_window", that says which samples are inside the window
     # Hint: you'll compare sample dates to the start and end of the window
-  in_window <- df$Sample_Date >= w1 & df$Sample_Date < w2
+    in_window <- df$Sample_Date >= w1 & df$Sample_Date < w2
 
     # Use indexing to pull out the ion concentrations that fall inside the window
     nh4_window <- df$`NH4-N`[in_window]
@@ -36,8 +34,6 @@ moving_average <- function(df) {
     result$Mg[i] <- mean(mg_window, na.rm = TRUE)
     result$K[i] <- mean(k_window, na.rm = TRUE)
     result$`NO3-N`[i] <- mean(no3_window, na.rm = TRUE)
-
-    
   }
   return(result)
   # Return the result
