@@ -40,7 +40,7 @@ data_longer$Nutrient <- factor(
 )
 
 # Write the documents
-write_csv(data_longer, "output/output.csv")
+write_csv(data_longer, "../output/output.csv")
 ```
 
 ## Results
