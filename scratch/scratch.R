@@ -1,6 +1,8 @@
 library(tidyverse)
 source("moving_average.R")
 
+
+
 bisley1 <- read_csv("data/Bisley1.csv")
 bisley2 <- read_csv("data/Bisley2.csv")
 bisley3 <- read_csv("data/Bisley3.csv")
