@@ -1,69 +1,55 @@
 ## Background
 
-This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium and Ammonia in the years before and after a hurricane at four different sites in Bisley, Puerto Rico. The analysis uses a 9 week moving average to look at the levels of these nutrients from 1988 to 1994.
+This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium and Ammonia in the years before and after a hurricane at four different sites in Puerto Rican Streams. The analysis uses a 9 week moving average to look at the levels of these nutrients from 1988 to 1994.
 
 ## Data
 
-reads in the stream data from every site, selects only the important columns
+CSV files from [McDowell, William H., and USDA Forest Service. International Institute Of Tropical Forestry (IITF). 2024.](https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458).  Downloaded and stored within the repository.
 ```{r}
 #| echo: false
 #| output: false
 #| warning: false
 
 library(tidyverse)
+clean_data <- read_csv("../output/output.csv")
 
-source("../1_clean_data.R")
-source("../R/moving_average.R")
+# Put the nutrients in the correct order
+clean_data$Nutrient <- factor(
+  clean_data$Nutrient,
+  levels = c("K", "NO3-N", "Mg", "Ca", "NH4-N")
+)
 ```
 
 ## Methods
 
-calls in the function to create the moving average windows for every site, and then binds all of the data frames together. Pivots longer to put all nutrients into a single column.
-```{r}
-# Call the moving average function
-func_bis1 <- moving_average(bisley_1)
-func_bis2 <- moving_average(bisley_2)
-func_bis3 <- moving_average(bisley_3)
-func_bis4 <- moving_average(PRM_new)
+Create a "moving average" function to find a nine week moving average for the stream chemistry data.
+Clean the data files by selecting relevant columns and adding a "sample ID" column to keep track of site location once files are combined.
+Call the "moving_average" function on each dataframe.
+Combine the moving_average output files into one larger data frame,  and pivot longer to create "nutrient" and "concentration" columns.
+Put the nutrients in the correct order.
 
-# Combine into one data frame
-data_combined <- bind_rows(func_bis1, func_bis2, func_bis3, func_bis4)
-
-# Pivot longer
-data_longer <- data_combined |>
-  pivot_longer(
-    cols = c(`NH4-N`, Ca, Mg, K, `NO3-N`),
-    names_to = "Nutrient",
-    values_to = "Concentration"
-  )
-
-# Put the nutrients in the correct order
-data_longer$Nutrient <- factor(
-  data_longer$Nutrient,
-  levels = c("K", "NO3-N", "Mg", "Ca", "NH4-N")
-)
-
-# Write the documents
-write_csv(data_longer, "../output/output.csv")
-```
 
 ## Results
 
-Plots the results
+Plot the results
 ```{r}
 #| warning: false
-#Plot the data
 ggplot(
-  data = data_longer,
-  mapping = aes(x = window_start, y = Concentration, linetype = sampleid)
+  data = clean_data,
+  mapping = aes(x = window_start, y = Concentration, linetype = Site)
 ) +
   geom_line() +
-  facet_wrap(vars(Nutrient), scales = 'free_y', ncol = 1) +
+  facet_wrap(
+    vars(Nutrient),
+    scales = 'free_y',
+    ncol = 1,
+    strip.position = "left"
+  ) +
   theme_bw() +
   labs(
-    x = "Date",
+    x = "Years",
     y = "Concentration",
-    title = "Concentration in Bisley, PR Streams"
+    title = "Ion Concentrations in PR Streams"
   ) +
   geom_vline(
     xintercept = ymd("1989-09-17"),

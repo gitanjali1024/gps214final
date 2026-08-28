@@ -9,10 +9,11 @@ Gitanjali Sharma
 ## Repository
 - [Data](gps214final/data)
 - [Clean Data](gps214final/1_clean_data.R)
-- [Docs](gps214final/docs)
-- [Output](gps214final/output)
+- [Docs](docs)
+- [Output](output)
 - [Function](R)
-- [Final Document](gps214final/paper/paper.qmd)
+- [Paper](paper/paper.qmd)
+- [Docs](docs)
 
 ## Data
 The data can be accessed from https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458

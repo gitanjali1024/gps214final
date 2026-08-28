@@ -2,7 +2,7 @@
 moving_average <- function(df) {
   # Initialize a tibble to contain the results
   result <- tibble(
-    sampleid = df$Sample_ID[1],
+    Site = df$Sample_ID[1],
     window_start = seq(ymd("1988-01-05"), ymd("1994-12-31"), by = "63 days"),
     `NH4-N` = NA,
     Ca = NA,
