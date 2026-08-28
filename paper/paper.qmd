@@ -1,3 +1,8 @@
+---
+title: Ion Concentrations in Puerto Rican Streams
+format: html
+---
+
 ## Background
 
 This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium and Ammonia in the years before and after a hurricane at four different sites in Puerto Rican Streams. The analysis uses a 9 week moving average to look at the levels of these nutrients from 1988 to 1994.
@@ -31,7 +36,7 @@ Put the nutrients in the correct order.
 
 ## Results
 
-Plot the results
+The results of this study show that the ion concentrations increased overall for most nutrients in the streams studied. Some streams and nutrients appeared to go back to normal after enough time has passed, while others stayed elevated.
 ```{r}
 #| warning: false
 ggplot(
