@@ -1,4 +1,4 @@
-## Stream Water Quality in Puerto Rico Before and After a Hurricane
+## Stream Water Quality in Puerto Rican Streams Before and After a Hurricane
 
 ## Description
 This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium and Ammonia in the years before and after a hurricane at four different sites. The analysis uses a 9 week moving average to look at the levels of these nutrients from 1988 to 1994.
@@ -8,7 +8,11 @@ Gitanjali Sharma
 
 ## Repository
 - [Data](gps214final/data)
-- [Scratch](gps214final/scratch)
+- [Clean Data](gps214final/1_clean_data.R)
+- [Docs](gps214final/docs)
+- [Output](gps214final/output)
+- [Function](R)
+- [Final Document](gps214final/paper/paper.qmd)
 
 ## Data
 The data can be accessed from https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458
