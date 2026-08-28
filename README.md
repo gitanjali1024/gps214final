@@ -7,13 +7,12 @@ This project looks at concentrations of Ammonium, Calcium, Magnesium, Potassium 
 Gitanjali Sharma
 
 ## Repository
-- [Data](gps214final/data)
+- [Raw Data](gps214final/data)
 - [Clean Data](gps214final/1_clean_data.R)
 - [Docs](docs)
 - [Output](output)
 - [Function](R)
 - [Paper](paper/paper.qmd)
-- [Docs](docs)
 
 ## Data
 The data can be accessed from https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458
